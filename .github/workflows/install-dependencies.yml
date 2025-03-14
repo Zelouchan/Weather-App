@@ -1,0 +1,26 @@
+name: Install Dependencies & Cache
+
+on: 
+  push:
+    branches:
+      - main
+  create:
+
+jobs:
+  setup-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project (Optional)
+        run: npm run build
