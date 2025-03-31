@@ -16,6 +16,7 @@ body {
 		'nav main'
 		'footer footer';
         font-family: Arial, Helvetica, sans-serif;
+		box-sizing: border-box;
 }
 
 header,
@@ -71,14 +72,31 @@ nav {
 }
 
 .currentWeather {
-    background-color: azure;
     display: grid;
-	place-items: center;
+	grid-template:
+	"current current" 1fr
+	"rain rain" 1fr
+	"sunUp sunSet" 2fr;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.currentWeather div {
+place-content: center;
 }
 
 .forecast {
     background-color: brown;
 }
+
+#current {
+	grid-area: current;
+}
+
+#rain {
+	grid-area: rain;
+}
+
 
 footer {
 	grid-area: footer;
