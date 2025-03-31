@@ -1,4 +1,5 @@
 import "./style.css";
+import hail from './weatherIcons/hail.png';
 
 let weatherData = [];
 let forecast = [];
@@ -26,7 +27,7 @@ function locationSearch() {
       weatherData = data.currentConditions;
       forecast = data.days;
       console.log(weatherData);
-      console.log(forecast);
+      console.table(forecast);
 
       locationSearch.textContent = `Weather for ${locationSearched}`;
 
@@ -47,7 +48,7 @@ function createForecastDay(index) {
   const forecastWeatherDiv = document.querySelector(".forecast");
 
   const forecastDay = document.createElement("div");
-  forecastDay.classList.add("forecastDay"); 
+  forecastDay.classList.add("forecastDay");
 
   const dayDate = document.createElement("div");
 
@@ -55,9 +56,9 @@ function createForecastDay(index) {
 
   const date = new Date(dateDisplay);
 
-  const options = { day: '2-digit', month: 'long' };
-  const formattedDate = date.toLocaleDateString('en-GB', options);
-  
+  const options = { day: "2-digit", month: "long" };
+  const formattedDate = date.toLocaleDateString("en-GB", options);
+
   dayDate.innerText = formattedDate;
   forecastDay.appendChild(dayDate);
 
@@ -75,8 +76,6 @@ function createForecastDay(index) {
 
   forecastWeatherDiv.appendChild(forecastDay);
 }
-
-createForecastDay();
 
 function createCurrentWeatherDisplay() {
   const currentWeatherDiv = document.querySelector(".currentWeather");
@@ -98,8 +97,14 @@ function createCurrentWeatherDisplay() {
   currentSetDiv.id = "sunSet";
   currentSetDiv.textContent = `Sun set: ${weatherData.sunset}.`;
 
+  const weatherIcon = document.createElement("img");
+  weatherIcon.src = hail;
+  weatherIcon.style = "width: 75px";
+
   currentWeatherDiv.appendChild(currentTempDiv);
   currentWeatherDiv.appendChild(currentRainDiv);
   currentWeatherDiv.appendChild(currentRiseDiv);
+  currentWeatherDiv.appendChild(weatherIcon);
   currentWeatherDiv.appendChild(currentSetDiv);
+
 }

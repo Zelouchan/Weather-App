@@ -1,8 +1,16 @@
+:root {
+  --ghostwhite: #f7f7ff;
+  --rosybrown: #c49991;
+  --gunmetal: #2b303a;
+  --zomp: #519e8a;
+}
+
 * {
   height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
+  color: var(--gunmetal);
 }
 
 body {
@@ -17,7 +25,7 @@ body {
     "footer footer";
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
-  background-color: teal;
+  background-color: var(--zomp);
 }
 
 header,
@@ -29,10 +37,22 @@ footer {
 header {
   grid-area: header;
   font-size: 50px;
+  font-weight: bold;
 }
 
 nav {
   grid-area: nav;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.degrees {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+span .degrees input {
+  width: 20px;
 }
 
 .searchBar {
@@ -45,43 +65,62 @@ nav {
 }
 
 .searchBar input {
-	font-size: 16px;
+  font-size: 16px;
   width: 90%;
   padding: 3%;
+  border: 3px solid var(--gunmetal);
+  border-radius: 5px;
+  background-color: var(--rosybrown);
 }
 
 .searchBar button {
-	font-size: 16px;
-	padding: 2%;
+  font-size: 16px;
+  padding: 2%;
   width: 90%;
+  border: 3px solid var(--gunmetal);
+  background-color: var(--rosybrown);
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .main {
-	box-sizing: border-box;
+  box-sizing: border-box;
   grid-area: main;
   height: 100%;
   width: 90%;
   display: grid;
   grid-template-rows: 1fr 3fr 4fr;
   border-radius: 15px;
-  background-color: lightblue;
+  background-color: var(--ghostwhite);
   padding: 2%;
+  gap: 15px;
+  border-radius: 5px;
+  border: 3px solid var(--gunmetal);
+  background: rgb(196, 153, 145);
+  background: linear-gradient(
+    180deg,
+    rgba(196, 153, 145, 1) 0%,
+    rgba(247, 247, 255, 0.6610293775713411) 80%
+  );
 }
 
 .location {
   display: grid;
   place-items: center;
   font-size: 2em;
+  border-bottom: 3px double var(--gunmetal);
 }
 
 .currentWeather {
   display: grid;
-  grid-template:
-    "current current" 1fr
-    "rain rain" 1fr
-    "sunUp sunSet" 2fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "current current"
+    "rain rain"
+    "sunUp sunSet";
   text-align: center;
   font-size: 1.5em;
+  border-bottom: 3px double var(--gunmetal);
 }
 
 .currentWeather div {
@@ -99,9 +138,9 @@ nav {
 }
 
 .forecastDay {
-	grid-template-rows: 1fr 2fr 2fr 2fr;
-	text-align: center;
-	padding: 1%;
+  grid-template-rows: 1fr 2fr 2fr 2fr;
+  text-align: center;
+  padding: 1%;
 }
 
 #current {
