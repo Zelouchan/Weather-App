@@ -50,7 +50,15 @@ function createForecastDay(index) {
   forecastDay.classList.add("forecastDay"); 
 
   const dayDate = document.createElement("div");
-  dayDate.innerText = `${forecast[index].datetime}`;
+
+  const dateDisplay = forecast[index].datetime;
+
+  const date = new Date(dateDisplay);
+
+  const options = { day: '2-digit', month: 'long' };
+  const formattedDate = date.toLocaleDateString('en-GB', options);
+  
+  dayDate.innerText = formattedDate;
   forecastDay.appendChild(dayDate);
 
   const dayTemp = document.createElement("div");
